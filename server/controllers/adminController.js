@@ -32,12 +32,23 @@ export const getAllBlogsAdmin = async (req, res) =>{
 
 export const getAllComments = async (req, res) => {
   try {
-    const comments = await Comment.find({}).populate("blog").sort({createdAt: -1});
-    res.json({success: true, token, comments})
+    const comments = await Comment
+      .find({})
+      .populate("blog")
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      comments
+    });
   } catch (error) {
-     res.json({success: false, message: error.message})
+    res.json({
+      success: false,
+      message: error.message
+    });
   }
-}
+};
+
 
 export const getDashboard = async (req, res) => {
   try {
@@ -49,7 +60,7 @@ export const getDashboard = async (req, res) => {
     const dashboardData ={
       blogs, comments, drafts, recentBlogs
     }
-    res.json({success: true, token, dashboardData})
+    res.json({success: true, dashboardData})
   } catch (error) {
     res.json({success: false, message: error.message})
   }
