@@ -20,7 +20,7 @@ const Blog = () => {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
-  /* ================= BLOG DETAY ================= */
+  /* ===== BLOG DETAY ===== */
   const fetchBlogData = async () => {
     try {
       const { data } = await axios.get(`/api/blog/${id}`);
@@ -30,7 +30,7 @@ const Blog = () => {
     }
   };
 
-  /* ================= YORUMLAR ================= */
+  /* ===== YORUMLAR ===== */
   const fetchComments = async () => {
     try {
       const { data } = await axios.post("/api/blog/comments", {
@@ -45,7 +45,7 @@ const Blog = () => {
     }
   };
 
-  /* ================= YORUM EKLE ================= */
+  /* ===== YORUM EKLE ===== */
   const addComment = async (e) => {
     e.preventDefault();
 
@@ -60,7 +60,7 @@ const Blog = () => {
         toast.success("Yorumunuz alındı, onay sonrası yayınlanacaktır.");
         setName("");
         setContent("");
-        fetchComments(); // yorumları tekrar çek
+        fetchComments();
       }
     } catch (error) {
       toast.error(error.message);
@@ -84,7 +84,7 @@ const Blog = () => {
 
       <Navbar />
 
-      {/* ======= BLOG HEADER ======= */}
+      {/* ===== HEADER ===== */}
       <div className="text-center mt-20 text-gray-600">
         <p className="text-primary py-4 font-medium">
           {Moment(data.createdAt).format("D MMMM YYYY")} tarihinde yayınlandı.
@@ -103,7 +103,7 @@ const Blog = () => {
         </p>
       </div>
 
-      {/* ======= BLOG CONTENT ======= */}
+      {/* ===== CONTENT ===== */}
       <div className="mx-5 max-w-5xl md:mx-auto my-10 mt-6">
         <img src={data.image} alt="" className="rounded-3xl mb-5" />
 
@@ -112,7 +112,7 @@ const Blog = () => {
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
 
-        {/* ======= YORUMLAR ======= */}
+        {/* ===== YORUMLAR ===== */}
         <div className="mt-14 mb-10 max-w-3xl mx-auto">
           <p className="font-semibold mb-4">
             Yorumlar ({comments.length})
@@ -141,7 +141,7 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* ======= YORUM EKLE ======= */}
+        {/* ===== YORUM EKLE ===== */}
         <div className="max-w-3xl mx-auto">
           <p className="font-semibold mb-4">Yorumunuzu ekleyin</p>
 
@@ -175,7 +175,7 @@ const Blog = () => {
           </form>
         </div>
 
-        {/* ======= PAYLAŞ ======= */}
+        {/* ===== PAYLAŞ ===== */}
         <div className="my-24 max-w-3xl mx-auto">
           <p className="font-semibold my-4">
             Bu makaleyi sosyal medyada paylaşın
